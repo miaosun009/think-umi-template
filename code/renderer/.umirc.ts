@@ -1,6 +1,4 @@
 import { IConfig } from 'umi-types';
-// @ts-ignore
-import path from 'path';
 const config: IConfig = {
 	treeShaking: true,
 	plugins: [
@@ -22,19 +20,7 @@ const config: IConfig = {
 				}
 			}
 		]
-	],
-	chainWebpack: (config: any) => {
-		const ts_loader = path.join(__dirname, '../node_modules/af-webpack/node_modules/ts-loader');
-		config.module
-			.rule('ts')
-			.test(/\.tsx?$/)
-			.use('ts-loader')
-			.loader(ts_loader)
-			.options({
-				transpileOnly: true,
-				configFile: path.join(__dirname, '../tsconfig.json')
-			});
-	}
+	]
 };
 
 export default config;
